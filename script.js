@@ -7,27 +7,27 @@ const scriptRules = require('./script.json');
 
 module.exports = new Script({
     processing: {
-        prompt: (bot) => bot.say('Beep boop...'),
+        //prompt: (bot) => bot.say('Beep boop...'),
         receive: () => 'processing'
     },
 
     start: {
         receive: (bot) => {
             return bot.say('Hi, my name is botti? How can I help you? Just say HELLO to get started.')
-4                 .then(() => 'askName'); 
-15         } 
-16     }, 
-17 
+                 .then(() => 'askName'); 
+       } 
+    }, 
  
-18     askName: { 
-19         prompt: (bot) => bot.say('What\'s your name?'), 
-20         receive: (bot, message) => { 
-21             const name = message.text; 
-22             return bot.setProp('name', name) 
-23                 .then(() => bot.say(`Great! I'll call you ${name}`)) 
-24                 .then(() => 'finish'); 
-25         } 
-26     }, 
+ 
+     askName: { 
+         prompt: (bot) => bot.say('What\'s your name?'), 
+         receive: (bot, message) => { 
+             const name = message.text; 
+             return bot.setProp('name', name) 
+                 .then(() => bot.say(`Great! I'll call you ${name}`)) 
+                 .then(() => 'finish'); 
+         } 
+     }, 
 
 
     speak: {
