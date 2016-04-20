@@ -14,9 +14,21 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hi, my name is botti? How can I help you? Just say HELLO to get started.')
-                .then(() => 'speak');
-        }
-    },
+4                 .then(() => 'askName'); 
+15         } 
+16     }, 
+17 
+ 
+18     askName: { 
+19         prompt: (bot) => bot.say('What\'s your name?'), 
+20         receive: (bot, message) => { 
+21             const name = message.text; 
+22             return bot.setProp('name', name) 
+23                 .then(() => bot.say(`Great! I'll call you ${name}`)) 
+24                 .then(() => 'finish'); 
+25         } 
+26     }, 
+
 
     speak: {
         receive: (bot, message) => {
